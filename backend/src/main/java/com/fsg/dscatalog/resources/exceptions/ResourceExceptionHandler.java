@@ -28,10 +28,10 @@ public class ResourceExceptionHandler {
     public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request) {
         StandardError error = new StandardError();
         error.setTimestamp(Instant.now());
-        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        error.setStatus(HttpStatus.NOT_FOUND.value());
         error.setError("Database exception");
         error.setMessage(e.getMessage());
         error.setPath(request.getRequestURI());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 }
